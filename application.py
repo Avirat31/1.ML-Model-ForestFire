@@ -6,6 +6,7 @@ from sklearn.preprocessing import StandardScaler
 
 application = Flask(__name__)
 app=application
+app.debug = True
 
 ## import ridge regresor model and standard scaler pickle
 ridge_model=pickle.load(open('models/ridge.pkl','rb'))
@@ -31,6 +32,7 @@ def predict_datapoint():
 
         new_data_scaled=standard_scaler.transform([[Temperature,RH,Ws,Rain,FFMC,DMC,ISI,Classes,Region]])
         result=ridge_model.predict(new_data_scaled)
+
 
         return render_template('home.html',result=result[0])
 
