@@ -70,14 +70,19 @@
                 <input type="text" class="form-control" id="isi" name="ISI" placeholder="Initial Spread Index" required />
             </div>
             <div class="form-group">
-                <label for="region"><b>Region:</b></label>
-                <select class="form-control" id="region" name="Region" required>
-                    <option value="Region 1">Region 1 (Bejaia)</option>
-                    <option value="Region 2">Region 2 (Sidi Bel-abbes)</option>
-                </select>
+                <label for="classes"><b>Fire Weather Index Classes:</b></label>
+                <input type="text" class="form-control" id="classes" name="Classes" placeholder="Fire Weather Index Classes" required />
             </div>
+            <div class="form-group">
+                <label for="region"><b>Region:</b></label>
+                <input type="text" class="form-control" id="region" name="Region" placeholder="Region" required />
+            </div>
+
             <button type="submit" class="btn btn-primary">Predict</button>
         </form>
+        <h2>
+            THE FWI prediction is {{result}}
+        </h2>
     </div>
 </body>
 
