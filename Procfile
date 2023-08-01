@@ -1,1 +1,1 @@
-web genicorn application.py
+web genicorn application:application
