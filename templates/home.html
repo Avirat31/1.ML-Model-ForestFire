@@ -14,6 +14,32 @@
     <div class="container">
         <h1>Fire Weather Index Prediction</h1>
 
+        
+        <p class="text-blue", style = "font-size: 20px;">      
+            This machine learning model was developed to predict forest fires in two regions of Algeria: Bejaia in the northeast and Sidi Bel-abbes in the northwest. The model utilizes the Algerian Forest Fires Dataset, which includes essential weather attributes and Fire Weather Index (FWI) components to make <span class="highlight-text">accurate predictions</span>.
+        </p>
+        <p class="text-blue", style = "font-size: 20px;">
+            The model is trained on a supervised learning approach, which means that it learns from historical data with known fire outcomes. It leverages weather attributes and FWI components as input features to predict whether a forest fire is likely to occur (Fire) or not (Not Fire).
+        </p>
+        <p style = "font-size: 50px;", style = "font-size: 20px;">
+            <b>Attribute Information:</b>
+            <ul style = "font-size: 20px;">
+                <li><span class="highlight-text">Temp :</span> temperature noon (temperature max) in Celsius degrees: 22 to 42</li>
+                <li><span class="highlight-text">RH :</span> Relative Humidity in %: 21 to 90</li>
+                <li><span class="highlight-text">Ws :</span> Wind speed in km/h: 6 to 29</li>
+                <li><span class="highlight-text">Rain:</span> total day in mm: 0 to 16.8</li>
+                <li><span class="highlight-text">FWI Components</span>
+                    <ul>
+                        <li><span class="highlight-text">Fine Fuel Moisture Code (FFMC)</span> index from the FWI system: 28.6 to 92.5</li>
+                        <li><span class="highlight-text">Duff Moisture Code (DMC)</span> index from the FWI system: 1.1 to 65.9</li>
+                        <li><span class="highlight-text">Initial Spread Index (ISI)</span> index from the FWI system: 0 to 18.5</li>
+                    </ul>
+                </li>
+                <li><span class="highlight-text">Classes:</span> two classes, namely Fire and not Fire</li>
+                <li><span class="highlight-text">Region:</span> Region 1 : Bejaia region located in the northeast of Algeria. Region 2: Sidi Bel-abbes region located in the northwest of Algeria.</li>
+            </ul>
+        </p>
+
         <form action="{{ url_for('predict_datapoint')}}" method="post">
             <div class="form-group">
                 <label for="temperature"><b>Temperature:</b></label>
@@ -44,19 +70,14 @@
                 <input type="text" class="form-control" id="isi" name="ISI" placeholder="Initial Spread Index" required />
             </div>
             <div class="form-group">
-                <label for="classes"><b>Fire Weather Index Classes:</b></label>
-                <input type="text" class="form-control" id="classes" name="Classes" placeholder="Fire Weather Index Classes" required />
-            </div>
-            <div class="form-group">
                 <label for="region"><b>Region:</b></label>
-                <input type="text" class="form-control" id="region" name="Region" placeholder="Region" required />
+                <select class="form-control" id="region" name="Region" required>
+                    <option value="Region 1">Region 1 (Bejaia)</option>
+                    <option value="Region 2">Region 2 (Sidi Bel-abbes)</option>
+                </select>
             </div>
-
             <button type="submit" class="btn btn-primary">Predict</button>
         </form>
-        <h2>
-            THE FWI prediction is {{result}}
-        </h2>
     </div>
 </body>
 
